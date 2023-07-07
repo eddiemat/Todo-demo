@@ -1,0 +1,37 @@
+{% include 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h5 class="pt-5 text-center">please add task on bellow form and click button bellow to submit it</h5> <br><br>
+    <div class="row">
+
+        <div class="col-md-6 col-lg-6 p-0">
+            <!-- To Do Form -->
+            <form action="{% url 'usingUserCreatedForm' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <span style="display: flex;">
+                        <input type="text" class="form-control" name="taskName" placeholder="Add a task"> <br>
+                        <input type="text" class="form-control" name="description" placeholder="Add description"> <br>
+                        <button type="submit" class= "btn btn-primary" style="width: 200px;"><i class="fa fa-plus"></i> Add</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<br><br>
+<form action="{% url 'usingModelForm' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{modelForm.as_p}}
+    <input type="submit" class="color-primary" name="Submit">
+</form><br><br>
+
+<form action="{% url 'usingDjangoForm' %}" method="POST" enctype="multipart/form-data" >
+    {% csrf_token %}
+    {{djangoForm.as_p}}
+    <input type="submit" class="color-primary" name="Submit">
+</form>
+
+{% endblock content %}

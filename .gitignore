@@ -1,0 +1,8 @@
+
+# ignre all files with ".log extension"
+
+.log
+
+# ignore all files in test.py 
+
+test.py
