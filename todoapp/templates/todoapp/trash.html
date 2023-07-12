@@ -1,0 +1,59 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="container pt-5 pb-5" style="display: block; margin: auto; text-align: center;">
+    <h5>This List </h5>
+    <p> Will disapper automatic after 30 days</p>
+
+    <div class="row">
+        <div class="col-md-1 col-lg-1">
+            <div>
+                <span style="display: flex;">
+                    <a href="{% url 'home' %}" class="btn-success"><i class="fa fa-chevron-left"> Back </i></a>
+                </span>
+            </div>
+            <br><br>
+            <div>
+                <span style="display: flex;">
+                    <a href="{% url 'deleteAllInTrashConfirm' %}" class="btn-success"><i class="fa fa-trash"> All</i></a>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-lg-9">
+            {% for tasks in deletedTask %}
+            <div class="card m-1">
+                <div class="card-body">
+                    {{tasks}}
+                    <span style="position: relative; float: right;">
+                        <a href="{% url 'restore' tasks.id %}" class="btn btn-success"><i class="fa fa-check"></i> Restore</a>
+                        <a href="{% url 'confirmPermanentDelete' tasks.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+
+
+                    </span>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="col-md-2 col-lg-2">
+            <div style="position: absolute; right: 20px;">
+                <!--  add Task button-->
+                <div class="form-group">
+                    <span style="display: flex;">
+                        <a href="{% url 'restoreAll' %}" class="btn btn-primary" style="width: 200px;"><i class="fa fa-undo"></i>Restore All</a>
+                    </span>
+                </div>
+            </div> 
+        </div>
+
+    </div>
+</div>
+
+   
+{% endblock content %}
+
+
+
+
+

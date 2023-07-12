@@ -1,0 +1,11 @@
+
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="container pt-5 pb-5" style="display: block; margin: auto; text-align: center;">
+    <h4>Are you sure you want To delete </h4><br>
+    <h5>"{{taskName}}" permanently ?</h5><br>
+    <a class="btn btn-primary" href="{% url 'trash' %}">Concel</a></button>
+    <a class="btn btn-danger" href="{% url 'permanentDelete' taskName.id %}">Yes</a></button>
+</div>
+{% endblock content %}

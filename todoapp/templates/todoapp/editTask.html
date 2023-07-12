@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container pt-5 pb-5 text-center">
+    <form action="{% url 'editTask' task.id %}" method="POST" enctype="multipart/form-data" style="display: block; width: 500px; margin: auto;">
+        {% csrf_token %}
+        <input type="text" name="taskName" class="form-control" value="{{task.taskName}}"><br>
+        <input type="text" name="description" class="form-control" value="{{task.description}}">
+        <input type="submit" class="color-primary" name="Submit">
+    </form>
+
+</div>
+
+
+<form action="{% url 'editTask' task.id %}" method="POST" enctype="multipart/form-data" >
+    {% csrf_token %}
+
+    
+</form>
+
+{% endblock content %}

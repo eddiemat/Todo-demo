@@ -1,0 +1,10 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="container pt-5 pb-5" style="display: block; margin: auto; text-align: center;">
+    <h2>Are you sure you to restore  </h2><br>
+    <h4>{{task}} ? </h4>
+    <a class="btn btn-primary" href="{% url 'trash' %}">Concel</a></button>
+    <a class="btn btn-danger" href="{% url 'restoreConfirm' task.id  %}">Confim</a></button>
+</div>
+{% endblock content %}

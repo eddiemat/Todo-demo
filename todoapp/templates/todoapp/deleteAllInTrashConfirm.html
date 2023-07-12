@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container pt-5 pb-5" style="display: block; margin: auto; text-align: center;">
+    <h2>Once deleted cannot be restored</h2>
+    <h3>Are you sure you want to delete  </h3><br>
+    <h4>All Tasks in trash ? </h4>
+    <a class="btn btn-primary" href="{% url 'trash' %}">Concel</a></button>
+    <a class="btn btn-danger" href="{% url 'deleteAllInTrash' %}">Yes</a></button>
+</div>
+{% endblock content %}

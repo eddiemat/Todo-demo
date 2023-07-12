@@ -6,6 +6,7 @@ class Task(models.Model):
     taskName= models.CharField(max_length=100)
     description= models.CharField(max_length=500, blank=True)
     is_completed = models.BooleanField(default=False)
+    is_deleted= models.BooleanField(default=False)
     created_at= models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
     file=models.FileField

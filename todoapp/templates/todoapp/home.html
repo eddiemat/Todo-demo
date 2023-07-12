@@ -13,17 +13,24 @@
         <div class="col-md-6 col-lg-7" style="height: 450px; overflow: scroll;">
             <!-- List of all the tasks for the day -->
             {% for tasks in uncompletedTasks %}
+            {% if tasks not in deleted %}
             <div class="card m-1">
                 <div class="card-body">
                     {{tasks}}
                     <span style="position: relative; float: right;">
-                        <a class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
-                        <a class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                        <a class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                        <a href="{% url 'mark_as_done' tasks.id %}" class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
+                        <a href="{% url 'editTaskUsingModelForm' tasks.id  %}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                        <a href="{% url 'moveToTrash' tasks.id %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                     </span>
                 </div>
             </div>
-            {% endfor %}
+            {% endif %}
+    
+            {% endfor %} 
+            <br><br>
+
+            <a href="{% url 'trash' %}" class="btn-success"><i class="fa fa-trash">View  Trash</i></a>
+            
         </div>
         <div class="col-md-5 col-lg-5">
             <div style="position: absolute; right: 20px;">
@@ -33,16 +40,22 @@
                         <button class="btn btn-primary" style="width: 200px;"><a href="{% url 'usingModelForm' %}"><i class="fa fa-plus"></i>Add Task</a>Add Task</button>
                     </span>
                 </div>
-            </div><br>
-
+            </div> <br>
+            
             <h5>Completed Tasks</h5>
             <!-- List of all the tasks that have completed -->
             {% for tasks in completedTasks %}
+            {% if tasks not in deleted %}
             <div class="card m-1">
                 <div class="card-body">                    
                    {{tasks}}
+                   <span style="position: relative; float: right;">
+                    <a href="{% url 'mark_as_undone' tasks.pk %}" class= "btn btn-success"><i class="fa fa-undo"></i> Undo</a>
+                    <a href="{% url 'moveToTrash' tasks.pk %}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                </span>
                 </div>
             </div>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
